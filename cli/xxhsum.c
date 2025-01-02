@@ -1412,7 +1412,7 @@ static int XSUM_usage(const char* exename)
 static int XSUM_usage_advanced(const char* exename)
 {
     XSUM_usage(exename);
-    XSUM_log( "\nAdvanced :\n");
+    XSUM_log( "\nAdvanced: \n");
     XSUM_log( "  -V, --version        Display version information \n");
     XSUM_log( "      --tag            Produce BSD-style checksum lines \n");
     XSUM_log( "      --little-endian  Checksum values use little endian convention (default: big endian) \n");
