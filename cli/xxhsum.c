@@ -1394,8 +1394,7 @@ static int XSUM_usage(const char* exename)
     XSUM_log( WELCOME_MESSAGE(exename) );
     XSUM_log( "Create or verify checksums using fast non-cryptographic algorithm xxHash \n\n" );
     XSUM_log( "Usage: %s [options] [files] \n\n", exename);
-    XSUM_log( "When no filename provided or when '-' is provided, uses stdin as input. \n");
-    XSUM_log( "\nOptions: \n");
+    XSUM_log( "Options: \n");
     XSUM_log( "  -H#                  select an xxhash algorithm (default: %i) \n", (int)g_defaultAlgo);
     XSUM_log( "                       0: XXH32 \n");
     XSUM_log( "                       1: XXH64 \n");
