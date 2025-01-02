@@ -1408,7 +1408,6 @@ static int XSUM_usage(const char* exename)
     return 0;
 }
 
-
 static int XSUM_usage_advanced(const char* exename)
 {
     XSUM_usage(exename);
