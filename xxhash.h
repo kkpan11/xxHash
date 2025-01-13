@@ -1125,7 +1125,7 @@ XXH_PUBLIC_API XXH_PUREF XXH64_hash_t XXH64_hashFromCanonical(XXH_NOESCAPE const
 #  define XXH_VSX    5 /*!< VSX and ZVector for POWER8/z13 (64-bit) */
 #  define XXH_SVE    6 /*!< SVE for some ARMv8-A and ARMv9-A */
 #  define XXH_LSX    7 /*!< LSX (128-bit SIMD) for LoongArch64 */
-#  define XXH_LASX    8 /*!< LASX (256-bit SIMD) for LoongArch64 */
+#  define XXH_LASX   8 /*!< LASX (256-bit SIMD) for LoongArch64 */
 
 
 /*-**********************************************************************
