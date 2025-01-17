@@ -163,7 +163,13 @@
 #    define XSUM_ARCH "wasm/asmjs"
 #  endif
 #elif defined(__loongarch_lp64)
-#  define XSUM_ARCH "loongarch"
+#  if defined(__loongarch_asx)
+#    define XSUM_ARCH "loongarch64 + lasx"
+#  elif defined(__loongarch_sx)
+#    define XSUM_ARCH "loongarch64 + lsx"
+#  else
+#    define XSUM_ARCH "loongarch64"
+#  endif
 #else
 #  define XSUM_ARCH "unknown"
 #endif
