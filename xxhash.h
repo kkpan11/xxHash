@@ -1728,6 +1728,7 @@ struct XXH64_state_s {
 #endif
 
 /*!
+ * @internal
  * @brief The size of the internal XXH3 buffer.
  *
  * This is the optimal update size for incremental hashing.
@@ -1737,10 +1738,11 @@ struct XXH64_state_s {
 #define XXH3_INTERNALBUFFER_SIZE 256
 
 /*!
- * @internal
- * @brief Default size of the secret buffer (and @ref XXH3_kSecret).
+ * @def XXH3_SECRET_DEFAULT_SIZE
+ * @brief Default Secret's size
  *
- * This is the size used in @ref XXH3_kSecret and the seeded functions.
+ * This is the size of internal XXH3_kSecret
+ * and is needed by XXH3_generateSecret_fromSeed().
  *
  * Not to be confused with @ref XXH3_SECRET_SIZE_MIN.
  */
@@ -1770,7 +1772,7 @@ struct XXH64_state_s {
  */
 struct XXH3_state_s {
    XXH_ALIGN_MEMBER(64, XXH64_hash_t acc[8]);
-       /*!< The 8 accumulators. See @ref XXH32_state_s::v and @ref XXH64_state_s::v */
+       /*!< The 8 accumulators. See @ref XXH32_state_s::acc and @ref XXH64_state_s::acc */
    XXH_ALIGN_MEMBER(64, unsigned char customSecret[XXH3_SECRET_DEFAULT_SIZE]);
        /*!< Used to store a custom secret generated from a seed. */
    XXH_ALIGN_MEMBER(64, unsigned char buffer[XXH3_INTERNALBUFFER_SIZE]);
@@ -1987,7 +1989,7 @@ XXH3_64bits_withSecretandSeed(XXH_NOESCAPE const void* data, size_t len,
 /*!
  * @brief Calculates 128-bit seeded variant of XXH3 hash of @p data.
  *
- * @param data       The memory segment to be hashed, at least @p len bytes in size.
+ * @param input      The memory segment to be hashed, at least @p len bytes in size.
  * @param length     The length of @p data, in bytes.
  * @param secret     The secret used to alter hash result predictably.
  * @param secretSize The length of @p secret, in bytes (must be >= XXH3_SECRET_SIZE_MIN)
@@ -3950,8 +3952,8 @@ XXH_PUBLIC_API XXH64_hash_t XXH64_hashFromCanonical(XXH_NOESCAPE const XXH64_can
  * @ingroup tuning
  * @brief Overrides the vectorization implementation chosen for XXH3.
  *
- * Can be defined to 0 to disable SIMD or any of the values mentioned in
- * @ref XXH_VECTOR_TYPE.
+ * Can be defined to 0 to disable SIMD,
+ * or any other authorized value of @ref XXH_VECTOR.
  *
  * If this is not defined, it uses predefined macros to determine the best
  * implementation.
@@ -4369,7 +4371,10 @@ do { \
 #  error "default keyset is not large enough"
 #endif
 
-/*! Pseudorandom secret taken directly from FARSH. */
+/*!
+ * @internal
+ * @def XXH3_kSecret
+ * @brief Pseudorandom secret taken directly from FARSH. */
 XXH_ALIGN(64) static const xxh_u8 XXH3_kSecret[XXH_SECRET_DEFAULT_SIZE] = {
     0xb8, 0xfe, 0x6c, 0x39, 0x23, 0xa4, 0x4b, 0xbe, 0x7c, 0x01, 0x81, 0x2c, 0xf7, 0x21, 0xad, 0x1c,
     0xde, 0xd4, 0x6d, 0xe9, 0x83, 0x90, 0x97, 0xdb, 0x72, 0x40, 0xa4, 0xa4, 0xb7, 0xb3, 0x67, 0x1f,
