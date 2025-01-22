@@ -412,7 +412,7 @@ static void XSUM_testXXH3(const void* data, const XSUM_testdata64_t* testData)
 
         /* random ingestion */
         (void)XXH3_64bits_reset_withSeed(state, seed);
-        XSUM_XXH3_randomUpdate(state, data, len, &XXH3_64bits_update);
+        XSUM_XXH3_randomUpdate(state, data, len, XXH3_64bits_update);
         XSUM_checkResult64(XXH3_64bits_digest(state), Nresult);
 
         /* byte by byte ingestion */
@@ -483,7 +483,7 @@ static void XSUM_testXXH3_withSecret(const void* data, const void* secret,
 
         /* random ingestion */
         (void)XXH3_64bits_reset_withSecret(state, secret, secretSize);
-        XSUM_XXH3_randomUpdate(state, data, len, &XXH3_64bits_update);
+        XSUM_XXH3_randomUpdate(state, data, len, XXH3_64bits_update);
         XSUM_checkResult64(XXH3_64bits_digest(state), Nresult);
 
         /* byte by byte ingestion */
@@ -565,7 +565,7 @@ static void XSUM_testXXH128(const void* data, const XSUM_testdata128_t* testData
 
         /* random ingestion */
         (void)XXH3_128bits_reset_withSeed(state, seed);
-        XSUM_XXH3_randomUpdate(state, data, len, &XXH3_128bits_update);
+        XSUM_XXH3_randomUpdate(state, data, len, XXH3_128bits_update);
         XSUM_checkResult128(XXH3_128bits_digest(state), Nresult);
 
         /* byte by byte ingestion */
@@ -632,7 +632,7 @@ static void XSUM_testXXH128_withSecret(const void* data, const void* secret, siz
 
         /* random ingestion */
         (void)XXH3_128bits_reset_withSecret(state, secret, secretSize);
-        XSUM_XXH3_randomUpdate(state, data, len, &XXH3_128bits_update);
+        XSUM_XXH3_randomUpdate(state, data, len, XXH3_128bits_update);
         XSUM_checkResult128(XXH3_128bits_digest(state), Nresult);
 
         /* byte by byte ingestion */
