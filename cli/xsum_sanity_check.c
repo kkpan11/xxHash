@@ -342,7 +342,7 @@ static XSUM_U32 XSUM_rand(void)
  * Technically, XXH3_64bits_update is identical to XXH3_128bits_update as of
  * v0.8.0, but we treat them as separate.
  */
-typedef XXH_errorcode (*XSUM_XXH3_update_t)(XXH3_state_t* state, const void* input, size_t length);
+typedef XXH_errorcode (*XSUM_XXH3_update_t)(XXH_NOESCAPE XXH3_state_t* state, XXH_NOESCAPE const void* input, size_t length);
 
 /*
  * Runs the passed XXH3_update variant on random lengths. This is to test the
