@@ -2395,40 +2395,31 @@ static void XXH_free(void* p) { free(p); }
 #endif  /* XXH_NO_STDLIB */
 
 #ifndef XXH_memcpy
-#  include <string.h>
 /*!
  * @internal
  * @brief XXH_memcpy() macro can be redirected at compile time
  */
-static void* XXH_memcpy(void* dest, const void* src, size_t size)
-{
-    return memcpy(dest,src,size);
-}
+#  include <string.h>
+#  define XXH_memcpy memcpy
 #endif
 
 #ifndef XXH_memset
-#  include <string.h>
 /*!
  * @internal
  * @brief XXH_memset() macro can be redirected at compile time
  */
-static void* XXH_memset(void* dest, int value, size_t size)
-{
-    return memset(dest,value,size);
-}
+#  include <string.h>
+#  define XXH_memset memset
 #endif
 
 #ifndef XXH_memcmp
-/* Note: only needed by XXH128 */
-#  include <string.h>
 /*!
  * @internal
  * @brief XXH_memcmp() macro can be redirected at compile time
+ * Note: only needed by XXH128.
  */
-static int XXH_memcmp(void* dest, const void* src, size_t size)
-{
-    return memcmp(dest,src,size);
-}
+#  include <string.h>
+#  define XXH_memcmp memcmp
 #endif
 
 
