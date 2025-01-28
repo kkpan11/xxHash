@@ -2425,7 +2425,7 @@ static void* XXH_memset(void* dest, int value, size_t size)
  * @internal
  * @brief XXH_memcmp() macro can be redirected at compile time
  */
-static void* XXH_memcmp(void* dest, const void* src, size_t size)
+static int XXH_memcmp(void* dest, const void* src, size_t size)
 {
     return memcmp(dest,src,size);
 }
