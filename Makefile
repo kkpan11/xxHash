@@ -644,11 +644,11 @@ install_libxxhash.pc: libxxhash.pc
 install_xxhsum: xxhsum
 	@echo Installing xxhsum
 	$(Q)$(MAKE_DIR) $(DESTDIR)$(BINDIR)/
-	$(Q)$(INSTALL_PROGRAM) xxhsum $(DESTDIR)$(BINDIR)/xxhsum
-	$(Q)ln -sf xxhsum $(DESTDIR)$(BINDIR)/xxh32sum
-	$(Q)ln -sf xxhsum $(DESTDIR)$(BINDIR)/xxh64sum
-	$(Q)ln -sf xxhsum $(DESTDIR)$(BINDIR)/xxh128sum
-	$(Q)ln -sf xxhsum $(DESTDIR)$(BINDIR)/xxh3sum
+	$(Q)$(INSTALL_PROGRAM) xxhsum$(EXT) $(DESTDIR)$(BINDIR)/xxhsum$(EXT)
+	$(Q)ln -sf xxhsum$(EXT) $(DESTDIR)$(BINDIR)/xxh32sum$(EXT)
+	$(Q)ln -sf xxhsum$(EXT) $(DESTDIR)$(BINDIR)/xxh64sum$(EXT)
+	$(Q)ln -sf xxhsum$(EXT) $(DESTDIR)$(BINDIR)/xxh128sum$(EXT)
+	$(Q)ln -sf xxhsum$(EXT) $(DESTDIR)$(BINDIR)/xxh3sum$(EXT)
 
 install_man:
 	@echo Installing man pages
