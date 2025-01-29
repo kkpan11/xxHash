@@ -143,6 +143,7 @@ The following macros can be set at compilation time to modify `libxxhash`'s beha
                    This build flag is useful for embedded environments without dynamic allocation.
 - `XXH_memcpy`, `XXH_memset`, `XXH_memcmp` : redirect `memcpy()`, `memset()` and `memcmp()` to some user-selected symbol at compile time.
                    Redirecting all 3 removes the need to include `<string.h>` standard library.
+- `XXH_NO_EXTERNC_GUARD`: When `xxhash.h` is compiled in C++ mode, removes the `extern "C" { .. }` block guard.
 - `XXH_DEBUGLEVEL` : When set to any value >= 1, enables `assert()` statements.
                      This (slightly) slows down execution, but may help finding bugs during debugging sessions.
 
