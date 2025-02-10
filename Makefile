@@ -353,6 +353,11 @@ armtest: clean
 	@echo ---- test ARM compilation ----
 	CC=arm-linux-gnueabi-gcc MOREFLAGS="-Werror -static" $(MAKE) xxhsum
 
+.PHONY: arm64test
+arm64test: clean
+	@echo ---- test ARM64 compilation ----
+	CC=aarch64-linux-gnu-gcc MOREFLAGS="-Werror -static" $(MAKE) xxhsum
+
 .PHONY: clangtest
 clangtest: clean
 	@echo ---- test clang compilation ----
